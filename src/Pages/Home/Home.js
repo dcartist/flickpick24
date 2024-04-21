@@ -46,15 +46,12 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Header background={data.backdrop_path} /> */}
-      {moviePosterNumber}
 
       {
         moviePosterNumber.length > 0 && <Header background={moviePosterNumber} />
       }
 
 
-/i7GiYjjz6O39wIgviYJOwdljS6K.jpg
     </div>
   )
 }
