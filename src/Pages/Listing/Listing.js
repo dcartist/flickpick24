@@ -54,7 +54,7 @@ setMovies(response.results)
         {
             movies.map((movie, index) => {
                 return (
-                <MDBCol lg="3" md='3' sm="6" key={index} className="mb-6">
+                <MDBCol lg="3" md='3' sm="6" key={index} className="mb-6 d-flex justify-content-center flex-column">
                     <p>
                     <Suspense fallback={<div>Loading...</div>}>
   <DisplaySmall imageUrl={movie.poster_path} alt={movie.title} />

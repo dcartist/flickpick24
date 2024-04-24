@@ -5,7 +5,7 @@ export default function DisplaySmall({ imageUrl, alt }) {
     // console.log(alt)
     const basicContainer = useRef(null);
   return (
-    <div>  
+    <div className="text-center">  
 
 <MDBLazyLoading
 //  containerRef={basicContainer}
@@ -14,7 +14,7 @@ export default function DisplaySmall({ imageUrl, alt }) {
         //   lazyPlaceholder='https://place-hold.it/1321x583?text=Loading'
         //   lazyDelay={1000}
           alt={alt}
-          className='displayImages'
+          className='displayImages shadow-custom'
           animation='zoom-in'
         />
         {/* <img
