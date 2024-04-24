@@ -16,7 +16,7 @@ export default function Navigation() {
   const [openNav, setOpenNav] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+    <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#' className='title_header'>FlickPick</MDBNavbarBrand>
         <MDBNavbarToggler
