@@ -2,8 +2,9 @@ import { useEffect, useState, Suspense } from "react"
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 // import React from 'react'
+import DisplaySmall from "../../Components/Displays/Display";
 import Rating from "../../Components/Rating/Rating";
-const DisplaySmall = React.lazy(() => import('../../Components/Displays/Display'));
+// const DisplaySmall = React.lazy(() => import('../../Components/Displays/Display'));
 
 export default function Listing() {
     const [movies, setMovies] = useState([])

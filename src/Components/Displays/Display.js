@@ -1,15 +1,26 @@
 import React from 'react'
-
+import { MDBLazyLoading, MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 export default function DisplaySmall({ imageUrl, alt }) {
     // console.log(imageUrl)
     // console.log(alt)
   return (
     <div>  
-        <img
+
+<MDBLazyLoading
+          lazySrc={`https://image.tmdb.org/t/p/original${imageUrl}`}
+          lazyPlaceholder='https://place-hold.it/300x500/666/fff/000?text=loading...&fontsize=16'
+        //   lazyPlaceholder='https://place-hold.it/1321x583?text=Loading'
+        //   lazyDelay={1000}
+          alt={alt}
+          className='img-fluid'
+          animation='zoom-in'
+        />
+        {/* <img
     src={`https://image.tmdb.org/t/p/original${imageUrl}`}
     className='displayImages'
-    // className='img-fluid shadow-2-strong custom-img'
     alt={alt}
-  /></div>
+  /> */}
+  
+  </div>
   )
 }
