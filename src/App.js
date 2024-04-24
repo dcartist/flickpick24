@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import Home from './Pages/Home/Home';
+import Details from './Pages/Details/Details';
 import Listing from './Pages/Listing/Listing';
 import { Routes, Route } from 'react-router-dom';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'; // lib
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/listing" element={<Listing />} />
+      <Route path="/listing/:id" element={<Details />} />
       </Routes>
     </div>
   );
