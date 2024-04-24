@@ -8,7 +8,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css'; // lib
 function App() {
   // https://image.tmdb.org/t/p/original/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg
   return (
-    <div className="App">
+    <div className="bg-dark bg-gradient text-white">
       <Navigation />
 
      {/* <Home /> */}

@@ -35,7 +35,7 @@ export default function Navigation() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-  <MDBNavbarLink as={Link} to='/listing'><Link to='/listing'>Listing</Link></MDBNavbarLink>
+  <MDBNavbarLink as={Link}  to='/listing'><Link to='/listing'  className="link-secondary text-white">Listing</Link></MDBNavbarLink>
 </MDBNavbarItem>
             {/* <MDBNavbarItem>
               <MDBNavbarLink href='#'>Pricing</MDBNavbarLink>

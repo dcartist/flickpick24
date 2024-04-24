@@ -46,7 +46,7 @@ setMovies(response.results)
   return (
     <div>
         {/* <DisplaySmall url="oompa" imageUrl="test"></DisplaySmall> */}
-         <MDBContainer>
+         <MDBContainer className="mt-5">
 
       <MDBRow>
 
