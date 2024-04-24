@@ -4,6 +4,7 @@ import Header from '../../Components/Navigation/Header/Header';
 export default function Home() {
     const [data, setData] = useState(null);
     const [moviePosterNumber, setMoviePosterNumber] = useState('');
+    const [movies, setMovies] = useState([]);
     // const dataCall = async (movieNumber) => {
     //     const options = {method: 'GET', headers: {accept: 'application/json'}};
     //     const API = `https://api.themoviedb.org/3/movie/2312/images?api_key=${process.env.REACT_APP_API_KEY}`
@@ -26,8 +27,10 @@ export default function Home() {
 
             if (response.results.length > 0) {
               setMoviePosterNumber(response.results[0].backdrop_path)
+              setMovies(response.results)
             }
             console.log(data)
+            console.log(movies)
             // setMoviePosterNumber(data[0].backdrop_path)
 
           })
