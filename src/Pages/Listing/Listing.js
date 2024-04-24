@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow } from 'mdb-react-ui-kit';
-import DisplaySmall from "../../Components/Displays/Display";
 // import React from 'react'
 import Rating from "../../Components/Rating/Rating";
+const DisplaySmall = React.lazy(() => import('../../Components/Displays/Display'));
 
 export default function Listing() {
     const [movies, setMovies] = useState([])
@@ -53,11 +53,13 @@ setMovies(response.results)
         {
             movies.map((movie, index) => {
                 return (
-                <MDBCol md='3' sm="6" key={index}>
+                <MDBCol lg="3" md='3' sm="6" key={index} className="mb-6">
                     <p>
-                    <DisplaySmall imageUrl={movie.poster_path} alt={movie.title}></DisplaySmall>
+                    <Suspense fallback={<div>Loading...</div>}>
+  <DisplaySmall imageUrl={movie.poster_path} alt={movie.title} />
+</Suspense>
                     </p>
-                    <p>{movie.title}</p>
+                    <div>{movie.title}</div>
                    <MDBRow>
                     <MDBCol md="6">{movie.release_date.substring(0, 4)}</MDBCol>
                     <MDBCol md="6"><Rating ratingNumber={Math.round(movie.vote_average)}></Rating></MDBCol>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   MDBContainer,
   MDBNavbar,
@@ -34,16 +35,16 @@ export default function Navigation() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Features</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
+  <MDBNavbarLink as={Link} to='/listing'><Link to='/listing'>Listing</Link></MDBNavbarLink>
+</MDBNavbarItem>
+            {/* <MDBNavbarItem>
               <MDBNavbarLink href='#'>Pricing</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
                 Disabled
               </MDBNavbarLink>
-            </MDBNavbarItem>
+            </MDBNavbarItem> */}
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

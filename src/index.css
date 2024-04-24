@@ -14,7 +14,8 @@ code {
     monospace;
 }
 .displayImages {
-  max-height: 400px;
+  min-height: 300px;
+  max-height: 300px;
   object-fit: cover;
   max-width: 100%;
   height: auto;
