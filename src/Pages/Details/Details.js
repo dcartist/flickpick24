@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Suspense }  from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import HeaderDetails from '../../Components/Navigation/Header/HeaderDetails';
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+
 export default function Details() {
 const [movie, setmovie] = useState({})
   let history = useNavigate();
@@ -30,8 +32,26 @@ setmovie(response)
   return (
     <div>
       
-      <HeaderDetails background={movie.backdrop_path} />
-
+      <HeaderDetails {...movie} />
+<MDBContainer  className='offset-1 mt-3'>
+      <MDBRow>
+        <MDBCol>
+        {movie.overview}
+        <MDBRow>
+        <MDBCol></MDBCol>
+        <MDBCol>Director
+          
+        </MDBCol>
+        <MDBCol>Generes</MDBCol>
+        </MDBRow>
+        </MDBCol>
+        <MDBCol className='d-flex justify-content-center'>
+          <img className='w-50' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
+        </MDBCol>
+        
+      </MDBRow>
+     
+    </MDBContainer>
     {id}
 
     <p>
