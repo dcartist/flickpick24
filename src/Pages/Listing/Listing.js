@@ -27,18 +27,11 @@ export default function Listing() {
 console.log(response.results)
 setMovies(response.results)
 
-            // if (response.results.length > 0) {
-            // //   setMoviePosterNumber(response.results[0].backdrop_path)
-            //   setMovies(response.results)
-            // }
-            // console.log(data)
             console.log(movies)
             console.log("movies")
-            // setMoviePosterNumber(data[0].backdrop_path)
+           
 
           })
-          // .then(response => console.log(response.results))
-          // .then(response => setMoviePosterNumber(response.results[0].backdrop_path))
           .catch(err => console.error(err));
 
 
