@@ -11,12 +11,12 @@ import {
   MDBBtn
 } from 'mdb-react-ui-kit';
 
-export default function Header(props) {
+export default function HeaderDetails(props) {
     console.log(props.background)
   return (
     <div
     className='p-5 text-center bg-image'
-    style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${props.background}')`, height: '90vh' }}
+    style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${props.background}')`, height: '50vh' }}
   >
     <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
       <div className='d-flex justify-content-start align-items-center h-100'>

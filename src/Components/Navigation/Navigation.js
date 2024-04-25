@@ -18,7 +18,7 @@ export default function Navigation() {
   return (
     <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#' className='title_header'>FlickPick</MDBNavbarBrand>
+        <MDBNavbarBrand as={Link}  to='/home' className='title_header'>FlickPick</MDBNavbarBrand>
         <MDBNavbarToggler
           type='button'
           aria-expanded='false'
@@ -30,7 +30,7 @@ export default function Navigation() {
         <MDBCollapse navbar open={openNav}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
+              <MDBNavbarLink aria-current='page'  as={Link}  to='./' >
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>

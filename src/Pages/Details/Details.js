@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense }  from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
+import HeaderDetails from '../../Components/Navigation/Header/HeaderDetails';
 export default function Details() {
 const [movie, setmovie] = useState({})
   let history = useNavigate();
@@ -28,7 +28,9 @@ setmovie(response)
 }, []);
 
   return (
-    <div>Details
+    <div>
+      
+      <HeaderDetails background={movie.backdrop_path} />
 
     {id}
 
