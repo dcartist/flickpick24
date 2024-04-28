@@ -3,9 +3,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 // import React from 'react'
-import DisplaySmall from "../../Components/Displays/Display";
+// import DisplaySmall from "../../Components/Displays/Display";
 import Rating from "../../Components/Rating/Rating";
-// const DisplaySmall = React.lazy(() => import('../../Components/Displays/Display'));
+const DisplaySmall = React.lazy(() => import('../../Components/Displays/Display'));
 
 export default function Listing() {
     const [movies, setMovies] = useState([])
@@ -50,8 +50,13 @@ setMovies(response.results)
                 return (
                 <MDBCol lg="3" md='3' sm="6" key={index} className="mb-6 d-flex justify-content-center flex-column">
                     <p>
-                    <Suspense fallback={<div>Loading...</div>}><Link to={`/listing/${movie.id}`}>
-  <DisplaySmall imageUrl={movie.poster_path} alt={movie.title} /></Link>
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <Link to={`/listing/${movie.id}`}>
+
+{index > 3 ? <DisplaySmall starter="onScroll" imageUrl={movie.poster_path} alt={movie.title} /> : <DisplaySmall starter="onLoad" imageUrl={movie.poster_path} alt={movie.title} />}
+  {/* // <DisplaySmall {index > 3 ? starter="onScroll" : starter="onLoad"} imageUrl={movie.poster_path} alt={movie.title} /> */}
+  
+  </Link>
 </Suspense>
                     </p>
                     <div><Link to={`/listing/${movie.id}`} className="link-secondary text-white">{movie.title}</Link> </div>
