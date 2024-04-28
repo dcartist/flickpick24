@@ -37,14 +37,7 @@ export default function Navigation() {
             <MDBNavbarItem>
   <MDBNavbarLink as={Link}  to='/listing'><Link to='/listing'  className="link-secondary text-white">Listing</Link></MDBNavbarLink>
 </MDBNavbarItem>
-            {/* <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Pricing</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
-              </MDBNavbarLink>
-            </MDBNavbarItem> */}
+         
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
