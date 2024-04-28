@@ -12,7 +12,7 @@ export default function Details() {
   const getOMDB = (imdb_id) => {
  // Linking omdbapi to the movie database
  const options = { method: "GET", headers: { accept: "application/json" } };
- const omdbapi = `http://www.omdbapi.com/?i=${imdb_id}&plot=full&apikey=${process.env.REACT_APP_API_KEY_OMDB}`;
+ const omdbapi = `https://www.omdbapi.com/?i=${imdb_id}&plot=full&apikey=${process.env.REACT_APP_API_KEY_OMDB}`;
  console.log(omdbapi)
  fetch(omdbapi, options)
    .then((omdbResponse) => omdbResponse.json())
