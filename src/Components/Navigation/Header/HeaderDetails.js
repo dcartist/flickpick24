@@ -12,11 +12,10 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function HeaderDetails(props) {
-    console.log(props)
   return (
     <div
     className='p-5 text-center bg-image'
-    style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${props.backdrop_path}')`, height: '60vh' }}
+    style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${props.backdrop_path}')`, height: '60vh', minHeight: '400px'}}
   >
     <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
       <div className='d-flex justify-content-start align-items-center h-100'>

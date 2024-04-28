@@ -56,34 +56,33 @@ export default function Details() {
   return (
     <div>
       <HeaderDetails {...movie} />
-      <MDBContainer className="mt-3">
-        <MDBRow>
+      <MDBContainer fluid>
+        <MDBRow className="blackBackground p-5">
           <MDBCol>
-            <h3>Movie Overview</h3>
+            <h3>Overview</h3>
             {movie.overview}
-            <MDBRow className="mt-5">
+            <h3 className="mt-5">Details</h3>
+<MDBRow className="mb-1 py-0 ">
+  <MDBCol><strong>Runtime</strong><ul className="p-0" style={{ listStyleType: "none" }}><li>{movie.runtime} mins</li></ul></MDBCol>
+  <MDBCol><strong>Release Date</strong><ul className="p-0" style={{ listStyleType: "none" }}><li>{movie.release_date}</li></ul></MDBCol>
+  <MDBCol><strong>Rated</strong><ul className="p-0" style={{ listStyleType: "none" }}><li>{omdbMovie.Rated}</li></ul></MDBCol>
+</MDBRow>
+            <MDBRow>
               <MDBCol>
-                <p>
                   <strong>Actress</strong>
-                </p>
-
                 <ul className="p-0" style={{ listStyleType: "none" }}>
                   {omdbMovie.Actors &&
                     omdbMovie.Actors.split(", ").map((actor, index) => { return <li key={index}>{actor}</li>})}
                 </ul>
               </MDBCol>
               <MDBCol>
-                <p>
                   <strong>Director</strong>
-                </p>
                 <ul style={{ listStyleType: "none" }} className="p-0">
                   <li>{omdbMovie.Director}</li>
                 </ul>
               </MDBCol>
               <MDBCol>
-                <p className="font-weight-bold">
                   <strong>Generes</strong>{" "}
-                </p>
                 <ul className="p-0" style={{ listStyleType: "none" }}>
                   {movie.genres &&
                     movie.genres.map((genre, index) => {
@@ -92,7 +91,7 @@ export default function Details() {
                 </ul>
               </MDBCol>
             </MDBRow>
-            <h3 className="mt-5">Movie Plot</h3>
+            <h3 className="mt-5">Plot</h3>
             {omdbMovie.Plot &&  <p>{omdbMovie.Plot}</p>}
             
           </MDBCol>
@@ -103,6 +102,9 @@ export default function Details() {
               alt={movie.title}
             />
           </MDBCol>
+        </MDBRow>
+        <MDBRow className="fullblackBackground text-center">
+          <h1>Simular</h1>
         </MDBRow>
       </MDBContainer>
       {id}
