@@ -46,8 +46,8 @@ export default function Details() {
       .then((response) => {
         console.log(response);
         setmovie(response);
-        getOMDBName(response.original_title);
-        // getOMDB(response.imdb_id);
+        // getOMDBName(response.original_title);
+        getOMDB(response.imdb_id);
 
        
       }).catch((err) => console.error(err));
