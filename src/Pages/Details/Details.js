@@ -2,10 +2,14 @@ import React, { useEffect, useState, Suspense } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import HeaderDetails from "../../Components/Navigation/Header/HeaderDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import SimularListing from "../../Pages/Listing/SimularListing";
+// import { DisplaySmall } from "../../Components/Displays/Display";
 
+import { Link } from "react-router-dom";
 export default function Details() {
   const [movie, setmovie] = useState({});
   const [omdbMovie, setOmdbMovie] = useState({});
+  const [similarMovies, setSimilarMovies] = useState([{}]);
   let history = useNavigate();
   let { id } = useParams();
 
@@ -17,23 +21,20 @@ export default function Details() {
  fetch(omdbapi, options)
    .then((omdbResponse) => omdbResponse.json())
    .then((omdbResponse) => {
-     console.log("omdbResponse");
-     console.log(omdbResponse);
+    //  console.log("omdbResponse");
+    //  console.log(omdbResponse);
     return  setOmdbMovie(omdbResponse);
    }).catch((err) => console.error(err));
   }
 
-  const getOMDBName = (imdb_name) => {
- // Linking omdbapi to the movie database
+const getOMDBSimilar = (movie_id) => {
  const options = { method: "GET", headers: { accept: "application/json" } };
- const omdbapi = `https://www.omdbapi.com/?t=${imdb_name}&plot=full&apikey=${process.env.REACT_APP_API_KEY_OMDB}`;
- console.log(omdbapi)
- fetch(omdbapi, options)
-   .then((omdbResponse) => omdbResponse.json())
-   .then((omdbResponse) => {
-     console.log("omdbResponseName");
-     console.log(omdbResponse);
-    return  setOmdbMovie(omdbResponse);
+const API = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}`;  
+ console.log(API)
+ fetch(API, options)
+   .then((similarMoviesResponse) => similarMoviesResponse.json())
+   .then((similarMoviesResponse) => {
+    return  setSimilarMovies(similarMoviesResponse.results);
    }).catch((err) => console.error(err));
   }
 
@@ -46,13 +47,17 @@ export default function Details() {
       .then((response) => {
         console.log(response);
         setmovie(response);
-        // getOMDBName(response.original_title);
         getOMDB(response.imdb_id);
+        getOMDBSimilar(id);
 
        
       }).catch((err) => console.error(err));
   }, []);
-
+console.log(similarMovies)
+console.log("simpleMovies")
+if (similarMovies[0]) {
+ console.log(similarMovies[0].id)
+}
   return (
     <div>
       <HeaderDetails {...movie} />
@@ -103,8 +108,23 @@ export default function Details() {
             />
           </MDBCol>
         </MDBRow>
+     
         <MDBRow className="fullblackBackground text-center">
+        {/* {similarMovies && similarMovies.map((movie, index) => {
+           return <p>{movie.id} and {index}</p>
+          })} */}
           <h1>Simular</h1>
+          more info
+         
+          <MDBRow>
+          {/* {similarMovies && similarMovies.map((movie, index) => {
+           <p>{movie.id} and {index}</p>
+          })} */}
+          {similarMovies.map((movie, index) => {
+            return<SimularListing simularMovie={movie} index={index} />
+            // <SimularListing {...movie} index={index}></SimularListing>
+          })}
+          </MDBRow>
         </MDBRow>
       </MDBContainer>
       {id}

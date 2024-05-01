@@ -20,10 +20,16 @@ code {
   max-width: 100%;
   height: auto;
 }
+.displayImagesThumb {
+  min-height: 250px;
+  max-height: 250px;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+}
 
 
 .blackBackground {
-  /* background-color: #131313; */
   color: white;
   background: rgb(84,84,84);
 /* background: -moz-linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(49,49,49,1) 35%, rgba(0,0,0,1) 100%);
@@ -52,6 +58,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 38%, rgba(5
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
 
 } 
+
 
 
 .fullblackBackground {
