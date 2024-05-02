@@ -13,6 +13,20 @@ export default function Details() {
   let history = useNavigate();
   let { id } = useParams();
 
+
+  const firstLoad = () => {
+    const options = { method: "GET", headers: { accept: "application/json" } };
+    const API = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    fetch(API, options)
+      .then((response) => response.json())
+      .then((response) => {
+        setmovie(response);
+        getOMDB(response.imdb_id);
+        getOMDBSimilar(id);
+      }).catch((err) => console.error(err));
+  }
+
+
   const getOMDB = (imdb_id) => {
  // Linking omdbapi to the movie database
  const options = { method: "GET", headers: { accept: "application/json" } };
@@ -39,22 +53,13 @@ const API = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${pr
   }
 
   useEffect(() => {
-    const options = { method: "GET", headers: { accept: "application/json" } };
-    const API = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
-    console.log(API);
-    fetch(API, options)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setmovie(response);
-        getOMDB(response.imdb_id);
-        getOMDBSimilar(id);
-
-       
-      }).catch((err) => console.error(err));
+    firstLoad()
   }, []);
-console.log(similarMovies)
-console.log("simpleMovies")
+
+  useEffect(() => {
+    firstLoad()
+  }, [id]);
+
 if (similarMovies[0]) {
  console.log(similarMovies[0].id)
 }

@@ -3,21 +3,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import Rating from "../../Components/Rating/Rating";
-import DisplaySmall from "../../Components/Displays/Display";
-import DisplaySmallThumbs from "../../Components/Displays/Display";
+// import { DisplaySmallThumbs } from '../../Components/Displays/Display';
+import DisplaySmallThumbs from "../../Components/Displays/DisplaySmallThumbs";
+// import DisplaySmallThumbs from "../../Components/Displays/DisplaySmallThumbs";
 
   export default function SimularListing({simularMovie, index}) {
-    {console.log(simularMovie)}
+    console.log(simularMovie)
     return (
       
        <MDBCol
-        lg="2"
+        lg="3"
         md="3"
         sm="6"
         key={index}
         className="mb-6 d-flex justify-content-center flex-column"
       >
-          <Link to={`../listing/${simularMovie.id}`}>
+   
+          <Link to={`../listing/${simularMovie.id}`} onClick={() => window.scrollTo(0, 0)} className="text-whtie link-light">
+  
         <p>
               {index ? (
                 <DisplaySmallThumbs
