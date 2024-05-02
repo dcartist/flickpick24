@@ -3,9 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import Rating from "../../Components/Rating/Rating";
-// import { DisplaySmallThumbs } from '../../Components/Displays/Display';
 import DisplaySmallThumbs from "../../Components/Displays/DisplaySmallThumbs";
-// import DisplaySmallThumbs from "../../Components/Displays/DisplaySmallThumbs";
 
   export default function SimularListing({simularMovie, index}) {
     console.log(simularMovie)
