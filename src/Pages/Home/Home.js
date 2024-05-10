@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Navigation/Header/Header';
+import Categories from '../Categories/Categories';
 
 export default function Home() {
     const [data, setData] = useState(null);
@@ -54,6 +55,7 @@ export default function Home() {
         moviePosterNumber.length > 0 && <Header background={moviePosterNumber} />
       }
 
+<Categories />
 
     </div>
   )
