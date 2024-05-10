@@ -51,9 +51,9 @@ export default function Home() {
   return (
     <div>
 
-      {
+      {/* {
         moviePosterNumber.length > 0 && <Header background={moviePosterNumber} />
-      }
+      } */}
 
 <Categories />
 
