@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
-
+import { Link } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 
 export default function Categories() {
@@ -33,7 +33,7 @@ export default function Categories() {
                         return (
                             
                             <MDBCol md="4" key={index}  className="text-center">
-                                <h3>{genre.name}</h3>
+                                <p><Link to={`/categories/${genre.id}`} className="text-white">{genre.name}</Link></p>
                             </MDBCol>
                         )
                     })

@@ -30,8 +30,9 @@ export default function Navigation() {
         <MDBCollapse navbar open={openNav}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-              <MDBNavbarLink aria-current='page'  as={Link}  to='./' >
-                Home
+              <MDBNavbarLink aria-current='page'>
+                <Link to='../'  className="link-secondary text-white">
+                Home</Link>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
