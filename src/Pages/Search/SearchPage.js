@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { ChildComponent2, SearchEntireComponent } from "../../API/ApiListing";
 import { MDBInput } from 'mdb-react-ui-kit';
 import {SearchContainer} from '../../Components/Container/Container';
-
+import DisplayList from '../../Components/Displays/DisplayList';
 export default function SearchPage() {
 
-  // const [searchQuery, setSearchQuery] = useState(null);
   const [filteredPeople, setFilterPeople] = useState(null);
-  const [filteredMovie, setFilterMovie] = useState(null);
+  const [filteredMovie, setFilterMovie] = useState([]);
   const [value, setValue] = useState('');
 
   const filteringSearchQuery = (searchResults) => {
@@ -29,7 +28,7 @@ export default function SearchPage() {
     fetch(personAPI, options)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.results);
+        // console.log(response.results);
         setFilterPeople(response.results);
       }).catch((err) => console.error(err));
 
@@ -39,7 +38,8 @@ export default function SearchPage() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response.results);
-        setFilterMovie(response.results);
+       return setFilterMovie(response.results);
+        console.log(filteredMovie)
       }).catch((err) => console.error(err));
 
   }
@@ -52,11 +52,9 @@ export default function SearchPage() {
     }
   }, [value]);
 
-
+console.log(filteredMovie)
   return (
     <SearchContainer>
-      {/* <SearchInput value={value} setValue={setValue} />
-      <ChildComponent2 filteredPeople={filteredPeople} filteredMovie={filteredMovie} /> */}
     <div>
       <h2>Search for a movie or person</h2>
 
@@ -70,7 +68,9 @@ export default function SearchPage() {
       contrast
     />
 
-
+{
+  filteredMovie && filteredMovie.length > 0 && <DisplayList movies={filteredMovie} />
+}
     </div>
       </SearchContainer>
   )
