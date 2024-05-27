@@ -49,7 +49,6 @@ export default function SearchPage() {
     if (value.length > 1) {
       searchAPI(value);
     }
-    console.log(filteredPeople)
   }, [value]);
 
 
