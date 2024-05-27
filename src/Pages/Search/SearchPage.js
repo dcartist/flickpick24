@@ -11,7 +11,7 @@ export default function SearchPage() {
 
   const filteringSearchQuery = (searchResults) => {
     if (searchResults) {
-      const people = searchResults.filter((item) => item.media_type === "person");
+      const people = searchResults.filter((item) => item.media_type == "person");
       const movie = searchResults.filter((item) => item.media_type === "movie");
       setFilterPeople(people);
       setFilterMovie(movie);
@@ -21,14 +21,24 @@ export default function SearchPage() {
 
   const searchAPI = (searchQuery) => {
     const options = { method: "GET", headers: { accept: "application/json" } };
-    const API = `https://api.themoviedb.org/3/search/multi?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`;
+    const movieAPI = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`;
+    const personAPI = `https://api.themoviedb.org/3/search/person?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`;
 
-    fetch(API, options)
+    // Fetching Person
+    fetch(personAPI, options)
       .then((response) => response.json())
       .then((response) => {
         console.log(response.results);
-        // setSearchQuery(response.results);
-        filteringSearchQuery(response.results);
+        setFilterPeople(response.results);
+      }).catch((err) => console.error(err));
+
+
+    // Fetching Movies
+    fetch(movieAPI, options)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.results);
+        setFilterMovie(response.results);
       }).catch((err) => console.error(err));
 
   }
@@ -36,13 +46,17 @@ export default function SearchPage() {
   useEffect(() => {
     // searchAPI(value);
     console.log(value)
+    if (value.length > 1) {
+      searchAPI(value);
+    }
+    console.log(filteredPeople)
   }, [value]);
 
 
   return (
-    <div>Search
+    <div>
+      <h2>Search for a movie or person</h2>
 
-      <ChildComponent2></ChildComponent2>
       <MDBInput
       value={value}
       onChange={(e) => setValue(e.target.value)}
