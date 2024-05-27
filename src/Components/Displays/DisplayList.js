@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import Rating from "../Rating/Rating";
+import { ContainerWithRow } from "../Container/Container";
 // const DisplaySmall = React.lazy(() =>
 //   import("../../Components/Displays/Display")
 // );
@@ -12,8 +13,8 @@ import DisplaySmall from "../../Components/Displays/Display";
 
 export default function DisplayList({movies}) {
   return (
-    <div>  <MDBContainer className="mt-5">
-    <MDBRow>
+    <div>  
+      <ContainerWithRow containerClassName="mt-5">
       {movies.map((movie, index) => {
         return (
           <MDBCol
@@ -73,7 +74,7 @@ export default function DisplayList({movies}) {
           </MDBCol>
         );
       })}
-    </MDBRow>
-  </MDBContainer></div>
+  </ContainerWithRow>
+  </div>
   )
 }

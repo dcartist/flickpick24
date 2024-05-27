@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChildComponent2, SearchEntireComponent } from "../../API/ApiListing";
 import { MDBInput } from 'mdb-react-ui-kit';
+import {SearchContainer} from '../../Components/Container/Container';
 
 export default function SearchPage() {
 
@@ -21,8 +22,8 @@ export default function SearchPage() {
 
   const searchAPI = (searchQuery) => {
     const options = { method: "GET", headers: { accept: "application/json" } };
-    const movieAPI = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`;
-    const personAPI = `https://api.themoviedb.org/3/search/person?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`;
+    const movieAPI = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}&page=1`;
+    const personAPI = `https://api.themoviedb.org/3/search/person?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}&page=1`;
 
     // Fetching Person
     fetch(personAPI, options)
@@ -53,6 +54,9 @@ export default function SearchPage() {
 
 
   return (
+    <SearchContainer>
+      {/* <SearchInput value={value} setValue={setValue} />
+      <ChildComponent2 filteredPeople={filteredPeople} filteredMovie={filteredMovie} /> */}
     <div>
       <h2>Search for a movie or person</h2>
 
@@ -68,5 +72,6 @@ export default function SearchPage() {
 
 
     </div>
+      </SearchContainer>
   )
 }
