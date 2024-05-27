@@ -15,7 +15,7 @@ function App() {
       <Navigation />
 
      {/* <Home /> */}
-     
+     <Outlet />
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
       <Route path="/listing" element={<Listing />} />
       <Route path="/listing/:id" element={<Details />} />
       </Routes>
-      <Outlet />
+     
     </div>
   );
 }

@@ -15,6 +15,7 @@ export default function Details() {
 
 
   const firstLoad = () => {
+    window.scrollTo(0, 0);
     const options = { method: "GET", headers: { accept: "application/json" } };
     const API = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
     fetch(API, options)
