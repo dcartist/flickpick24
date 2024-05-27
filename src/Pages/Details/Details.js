@@ -35,8 +35,6 @@ export default function Details() {
  fetch(omdbapi, options)
    .then((omdbResponse) => omdbResponse.json())
    .then((omdbResponse) => {
-    //  console.log("omdbResponse");
-    //  console.log(omdbResponse);
     return  setOmdbMovie(omdbResponse);
    }).catch((err) => console.error(err));
   }
