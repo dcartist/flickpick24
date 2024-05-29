@@ -15,7 +15,7 @@ function App() {
       <Navigation />
 
      {/* <Home /> */}
-     <Outlet />
+     {/* <Outlet /> */}
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />

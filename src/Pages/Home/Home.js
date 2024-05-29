@@ -1,62 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../Components/Navigation/Header/Header';
-import Categories from '../Categories/Categories';
+import React, { useEffect, useState, useRef } from "react";
+import Header from "../../Components/Navigation/Header/Header";
+import Categories from "../Categories/Categories";
+import Search from "./Search";
+import { gsap } from "gsap";
+import { useTween } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
-    const [data, setData] = useState(null);
-    const [moviePosterNumber, setMoviePosterNumber] = useState('');
-    const [movies, setMovies] = useState([]);
-    // const dataCall = async (movieNumber) => {
-    //     const options = {method: 'GET', headers: {accept: 'application/json'}};
-    //     const API = `https://api.themoviedb.org/3/movie/2312/images?api_key=${process.env.REACT_APP_API_KEY}`
-    // // https://api.themoviedb.org/3/movie/popular/images?api_key=<<api_key>>&language=en-US&page=1
-    // // https://api.themoviedb.org/3/movie/popular/api_key=b14ba5de06eadbad8c6d48504b267328
-    // // https://api.themoviedb.org/3/movie/popular?api_key=b14ba5de06eadbad8c6d48504b267328
-    //       .then(response => response.json())
-    //       .then(response => setData(response))
-    //       .catch(err => console.error(err));
-    //   }
+  const [data, setData] = useState(null);
+  const [moviePosterNumber, setMoviePosterNumber] = useState("");
+  const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-        const options = {method: 'GET', headers: {accept: 'application/json'}};
-        const API = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
-    
-        fetch(API, options)
-          .then(response => response.json())
-          .then(response => {
-            setData(response.results)
+  // const categoriesRef = useRef(null);
+  // const searchRef = useRef(null);
 
-            if (response.results.length > 0) {
-              setMoviePosterNumber(response.results[0].backdrop_path)
-              setMovies(response.results)
-            }
-            console.log(data)
-            console.log(movies)
-            // setMoviePosterNumber(data[0].backdrop_path)
+  const [categoriesRef, categoriesInView] = useInView({
+    triggerOnce: false, 
+  });
 
-          })
-          // .then(response => console.log(response.results))
-          // .then(response => setMoviePosterNumber(response.results[0].backdrop_path))
-          .catch(err => console.error(err));
+  const [searchRef, searchInView] = useInView({
+    triggerOnce: false, 
+  });
 
-
-      }, []);
-
-      
-      // console.log(data)
-      // // console.log(data[0])
-      // // console.log(data[0].backdrop_path)
-      // console.log(moviePosterNumber)
 
   return (
     <div>
+      <motion.div
+        className="categories"
+        ref={categoriesRef}
+        initial={{ scale: 0 }}
+        animate={{ scale: categoriesInView ? 1 : 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Categories />
+      </motion.div>
 
-      {/* {
-        moviePosterNumber.length > 0 && <Header background={moviePosterNumber} />
-      } */}
+      <div style={{ height: "100vh", backgroundColor: "red" }}></div>
 
-<Categories />
-
+      <motion.div
+        ref={searchRef}
+        initial={{ scale: 0 }}
+        animate={{ scale: searchInView ? 1 : 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Search />
+      </motion.div>
+      <div style={{ height: "100vh", backgroundColor: "red" }}></div>
     </div>
-  )
+  );
 }
