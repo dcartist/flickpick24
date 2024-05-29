@@ -9,12 +9,6 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 export default function Home() {
-  const [data, setData] = useState(null);
-  const [moviePosterNumber, setMoviePosterNumber] = useState("");
-  const [movies, setMovies] = useState([]);
-
-  // const categoriesRef = useRef(null);
-  // const searchRef = useRef(null);
 
   const [categoriesRef, categoriesInView] = useInView({
     triggerOnce: false, 
