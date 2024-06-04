@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Details from './Pages/Details/Details';
 import Listing from './Pages/Listing/Listing';
 import SearchPage from './Pages/Search/SearchPage';
+import Year from './Pages/TimeLine/Year';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import CategoriesListing from './Pages/Categories/CategoriesListing';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'; // lib
@@ -24,6 +25,8 @@ function App() {
       <Route path="/categories/:id" element={<CategoriesListing />} />
       <Route path="/listing" element={<Listing />} />
       <Route path="/listing/:id" element={<Details />} />
+      <Route path="/year" element={<Year />} />
+      
       </Routes>
      
     </div>

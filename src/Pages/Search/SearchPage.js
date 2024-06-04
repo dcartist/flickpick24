@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ChildComponent2, SearchEntireComponent } from "../../API/ApiListing";
 import { MDBInput } from 'mdb-react-ui-kit';
 import {SearchContainer} from '../../Components/Container/Container';
 import DisplayList from '../../Components/Displays/DisplayList';
@@ -43,9 +42,8 @@ export default function SearchPage() {
       }).catch((err) => console.error(err));
 
   }
-// add useEffect to call the searchAPI function when value changes
+
   useEffect(() => {
-    // searchAPI(value);
     console.log(value)
     if (value.length > 1) {
       searchAPI(value);
