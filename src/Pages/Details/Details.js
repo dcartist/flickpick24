@@ -65,7 +65,7 @@ if (similarMovies[0]) {
   return (
     <div>
       <HeaderDetails {...movie} />
-      <MDBContainer fluid>
+      <MDBContainer>
         <MDBRow className="blackBackground p-5">
           <MDBCol>
             <h3>Overview</h3>
@@ -104,11 +104,13 @@ if (similarMovies[0]) {
             {omdbMovie.Plot &&  <p>{omdbMovie.Plot}</p>}
             
           </MDBCol>
-          <MDBCol className="d-flex justify-content-center">
+          <MDBCol  md="6" 
+  xs="12"  className="d-flex justify-content-center" style={{ minWidth: "300px" }}>
             <img
-              className="w-50 h-auto"
+              className="w-100"
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.title}
+              style={{ minWidth: "220px", maxWidth: "400px", width: "100%", height: "auto" }}
             />
           </MDBCol>
         </MDBRow>
@@ -118,8 +120,6 @@ if (similarMovies[0]) {
            return <p>{movie.id} and {index}</p>
           })} */}
           <h1>Simular</h1>
-          more info
-         
           <MDBRow>
           {/* {similarMovies && similarMovies.map((movie, index) => {
            <p>{movie.id} and {index}</p>

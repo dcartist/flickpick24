@@ -16,8 +16,6 @@ export default function SearchPage() {
       setFilterMovie(movie);
     }
   }
-
-
   const searchAPI = (searchQuery) => {
     const options = { method: "GET", headers: { accept: "application/json" } };
     const movieAPI = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${process.env.REACT_APP_API_KEY}&page=1`;
