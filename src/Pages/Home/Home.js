@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Header from "../../Components/Navigation/Header/Header";
 import Categories from "../Categories/Categories";
 import Search from "./Search";
+import Intro from "./Intro";
 import { gsap } from "gsap";
 import { useTween } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <div>
+      <Intro></Intro>
       <motion.div
         className="categories"
         ref={categoriesRef}
