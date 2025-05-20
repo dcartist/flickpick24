@@ -65,8 +65,8 @@ if (similarMovies[0]) {
   return (
     <div>
       <HeaderDetails {...movie} />
-      <MDBContainer>
-        <MDBRow className="blackBackground p-5">
+      <MDBContainer className="">
+        <MDBRow className=" p-5">
           <MDBCol>
             <h3>Overview</h3>
             {movie.overview}
@@ -110,7 +110,7 @@ if (similarMovies[0]) {
               className="w-100"
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.title}
-              style={{ minWidth: "220px", maxWidth: "400px", width: "100%", height: "auto" }}
+              style={{ minWidth: "220px", maxWidth: "500px", width: "100%", height: "auto", objectFit: "cover" }}
             />
           </MDBCol>
         </MDBRow>
@@ -121,9 +121,7 @@ if (similarMovies[0]) {
           })} */}
           <h1>Simular</h1>
           <MDBRow>
-          {/* {similarMovies && similarMovies.map((movie, index) => {
-           <p>{movie.id} and {index}</p>
-          })} */}
+
           {similarMovies.map((movie, index) => {
             return<SimularListing simularMovie={movie} index={index} />
             // <SimularListing {...movie} index={index}></SimularListing>

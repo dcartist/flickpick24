@@ -36,7 +36,9 @@ code {
 
 .blackBackground {
   color: white;
-  background: rgb(84,84,84);
+  background: rgb(29, 29, 29);
+  /* background: rgb(84,84,84); */
+  /* background: -moz-linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(49,49,49,1) 35%, rgba(0,0,0,1) 100%); */
 /* background: -moz-linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(49,49,49,1) 35%, rgba(0,0,0,1) 100%);
 background: -webkit-linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(49,49,49,1) 35%, rgba(0,0,0,1) 100%);
 background: linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(49,49,49,1) 35%, rgba(0,0,0,1) 100%);
@@ -64,15 +66,23 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endCo
 
 } 
 
+.outlines_on_the_side{
+ border-left: 1px solid #fff;   /* or your preferred color */
+  border-right: 1px solid #fff;  /* or your preferred color */
+  border-top: none;
+  border-bottom: none;
 
+}
 
 .fullblackBackground {
   /* background-color: #131313; */
   color: white;
   background: rgb(0,0,0);
+  /* background: rgb(0,0,0); */
 }
 .greyBackground {
   background-color: #545454;
+  /* background-color: #545454; */
 }
 /* media query for cellphones */
 @media (max-width: 1024px) {
