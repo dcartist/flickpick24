@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import Rating from "../../Components/Rating/Rating";
+import noposter from "../../Components/Image/noposter.jpeg";
 // const DisplaySmall = React.lazy(() =>
 //   import("../../Components/Displays/Display")
 // );
@@ -31,10 +32,11 @@ export default function Listing() {
       <MDBContainer className="mt-5">
         <MDBRow>
           {movies.map((movie, index) => {
+
             return (
               <MDBCol
                 lg="3"
-                md="3"
+                md="3"x
                 sm="6"
                 key={index}
                 className="mb-6 d-flex justify-content-center flex-column"
@@ -42,7 +44,7 @@ export default function Listing() {
                 <p>
                   <Suspense fallback={<div>Loading...</div>}>
                     <Link to={`/listing/${movie.id}`}>
-                      {index > 3 ? (
+                      {index > 7 ? (
                         <DisplaySmall
                           starter="onScroll"
                           imageUrl={movie.poster_path}

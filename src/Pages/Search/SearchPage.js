@@ -50,7 +50,7 @@ export default function SearchPage() {
 
 console.log(filteredMovie)
   return (
-    <SearchContainer>
+    <SearchContainer className="fullHeight">
     <div>
       <h2>Search for a movie or person</h2>
 

@@ -2,7 +2,7 @@ import React from "react";
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 
 const SearchContainer = ({ children }) => {
-  return <MDBContainer>{children}</MDBContainer>;
+  return <MDBContainer className="fullHeight">{children}</MDBContainer>;
 };
 
 const ContainerWithRow = ({ children, rowClassName = "", containerClassName = ""}) => {
