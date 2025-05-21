@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import HeaderDetails from "../../Components/Navigation/Header/HeaderDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import SimularListing from "../../Pages/Listing/SimularListing";
+import noPosterAvailable from "../../Components/Image/noposter.jpeg";
 // import { DisplaySmall } from "../../Components/Displays/Display";
 
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ export default function Details() {
   const [movie, setmovie] = useState({});
   const [omdbMovie, setOmdbMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([{}]);
+  const [moviePoster, setMoviePoster] = useState(noPosterAvailable);
   let history = useNavigate();
   let { id } = useParams();
 
@@ -22,6 +24,9 @@ export default function Details() {
       .then((response) => response.json())
       .then((response) => {
         setmovie(response);
+        if (response.poster_path !== null) {
+          setMoviePoster(`https://image.tmdb.org/t/p/original${response.poster_path}`);
+        } 
         getOMDB(response.imdb_id);
         getOMDBSimilar(id);
       }).catch((err) => console.error(err));
@@ -108,7 +113,7 @@ if (similarMovies[0]) {
   xs="12"  className="d-flex justify-content-center" style={{ minWidth: "300px" }}>
             <img
               className="w-100"
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              src={moviePoster}
               alt={movie.title}
               style={{ minWidth: "220px", maxWidth: "500px", width: "100%", height: "auto", objectFit: "cover" }}
             />

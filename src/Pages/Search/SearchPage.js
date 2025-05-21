@@ -42,7 +42,10 @@ export default function SearchPage() {
   }
 
   useEffect(() => {
-    console.log(value)
+    // Clear previous results when typing
+    setFilterMovie([]);
+    setFilterPeople(null);
+
     if (value.length > 1) {
       searchAPI(value);
     }

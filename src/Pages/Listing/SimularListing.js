@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import Rating from "../../Components/Rating/Rating";
 import DisplaySmallThumbs from "../../Components/Displays/DisplaySmallThumbs";
+import noposter from "../../Components/Image/noposter.jpeg";
 
   export default function SimularListing({simularMovie, index}) {
+    // const [moviePoster, setMoviePoster] = useState(noposter);
+    // if (simularMovie.poster_path !== null) {
+    //   setMoviePoster(`https://image.tmdb.org/t/p/original${simularMovie.poster_path}`);
+    // }
     console.log(simularMovie)
     return (
       

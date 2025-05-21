@@ -10,7 +10,7 @@ import {
   MDBCollapse,
   MDBBtn
 } from 'mdb-react-ui-kit';
-
+// backgroundColor: "#a10000" 
 export default function HeaderDetails(props) {
   return (
     <div

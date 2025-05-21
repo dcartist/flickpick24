@@ -21,7 +21,7 @@ export default function DisplayList({movies}) {
             lg="3"
             md="3"
             sm="6"
-            key={index}
+            key={movie.id}
             className="mb-6 d-flex justify-content-center flex-column"
           >
             <p>

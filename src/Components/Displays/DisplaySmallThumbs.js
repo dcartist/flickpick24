@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { MDBLazyLoading, MDBContainer, MDBAnimation, MDBRow } from 'mdb-react-ui-kit';
-
+import noposter from '../../Components/Image/noposter.jpeg';
 
 export default function DisplaySmallThumbs({ imageUrl, alt, starter }) {
+
   return (
     <div className="text-center">  
     <MDBAnimation
@@ -14,7 +15,7 @@ export default function DisplaySmallThumbs({ imageUrl, alt, starter }) {
    duration={1000}
    delay={300}
    alt={alt}
-   src={`https://image.tmdb.org/t/p/original${imageUrl}`}
+   src={imageUrl}
    className='displayImagesThumb'
  />
 </div>
