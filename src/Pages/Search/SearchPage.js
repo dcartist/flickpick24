@@ -55,7 +55,7 @@ console.log(filteredMovie)
   return (
     <SearchContainer className="fullHeight">
     <div>
-      <h2>Search for a movie or person</h2>
+      <h2 className='pt-5'>Search for a movie or person</h2>
 
       <MDBInput
       value={value}
