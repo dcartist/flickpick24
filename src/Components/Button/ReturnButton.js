@@ -1,9 +1,18 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
-import { useParams, useNavigate } from "react-router-dom";
 export default function ReturnButton() {
-    let history = useNavigate();
+  const history = useNavigate();
+  const handleClick = () => {
+    history(-1);
+    window.scrollTo(0, 0);
+    console.log("Back button clicked");
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div><button onClick={() => history(-1)}>Go Back</button></div>
-  )
+    <div>
+      <button onClick={handleClick}>Go Back</button>
+    </div>
+  );
 }

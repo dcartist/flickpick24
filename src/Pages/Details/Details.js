@@ -71,7 +71,8 @@ if (similarMovies[0]) {
     <div>
       <HeaderDetails {...movie} />
       <MDBContainer className="">
-        <MDBRow className=" p-5">
+      
+        <MDBRow className="p-5">
           <MDBCol>
             <h3>Overview</h3>
             {movie.overview}
@@ -110,8 +111,23 @@ if (similarMovies[0]) {
             
           </MDBCol>
           <MDBCol  md="6" 
-  xs="12"  className="d-flex justify-content-center" style={{ minWidth: "300px" }}>
-            <img
+  xs="12"  className="d-flex flex-column justify-content-center " style={{ minWidth: "300px" }}>
+              <MDBRow >
+          <MDBCol className="d-flex w-100 justify-content-end align-items-end p-5">
+              <p>
+       <button
+  className="btn btn-outline-light btn-lg"
+  onClick={() => {
+    history(-1);
+    setTimeout(() => window.scrollTo(0, 0), 20);
+  }}
+>
+  Go Back
+</button>
+      </p>
+          </MDBCol>
+        </MDBRow>   
+      <img
               className="w-100"
               src={moviePoster}
               alt={movie.title}
@@ -136,9 +152,7 @@ if (similarMovies[0]) {
       </MDBContainer>
       {id}
 
-      <p>
-        <button onClick={() => history(-1)}>Go Back</button>
-      </p>
+ 
     </div>
   );
 }
