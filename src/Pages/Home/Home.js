@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Header from "../../Components/Navigation/Header/Header";
 import Categories from "../Categories/Categories";
+import CategoriesListing from "../Categories/CategoriesListing";
+import CategoriesHome from "../Categories/CategoriesHome";
 import Search from "./Search";
 import Intro from "./Intro";
 import { gsap } from "gsap";
@@ -22,8 +24,8 @@ export default function Home() {
 
   return (
     <div>
-      <Intro></Intro>
-      <motion.div
+      {/* <Intro></Intro> */}
+      {/* <motion.div
         className="categories"
         ref={categoriesRef}
         initial={{ scale: 0 }}
@@ -31,7 +33,8 @@ export default function Home() {
         transition={{ duration: 1 }}
       >
         <Categories />
-      </motion.div>
+      </motion.div> */}
+        <CategoriesHome />
 
       <div style={{ height: "100vh", backgroundColor: "red" }}></div>
 
