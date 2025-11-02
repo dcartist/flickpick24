@@ -11,6 +11,7 @@ export default function Details() {
   const [movie, setmovie] = useState({});
   const [omdbMovie, setOmdbMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([{}]);
+  const [defaultMovies, setDefaultMovies] = useState([]);
   const [moviePoster, setMoviePoster] = useState(noPosterAvailable);
   let history = useNavigate();
   let { id } = useParams();
@@ -28,7 +29,8 @@ export default function Details() {
           setMoviePoster(`https://image.tmdb.org/t/p/original${response.poster_path}`);
         } 
         getOMDB(response.imdb_id);
-        getOMDBSimilar(id);
+        // Pass the response directly to ensure genres are available
+        getOMDBSimilarWithMovie(id, response);
       }).catch((err) => console.error(err));
   }
 
@@ -45,15 +47,41 @@ export default function Details() {
    }).catch((err) => console.error(err));
   }
 
-const getOMDBSimilar = (movie_id) => {
- const options = { method: "GET", headers: { accept: "application/json" } };
-const API = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}`;  
- console.log(API)
- fetch(API, options)
-   .then((similarMoviesResponse) => similarMoviesResponse.json())
-   .then((similarMoviesResponse) => {
-    return  setSimilarMovies(similarMoviesResponse.results);
-   }).catch((err) => console.error(err));
+  // Create a new function that has access to the movie data
+  const getOMDBSimilarWithMovie = (movie_id, movieData) => {
+    const options = { method: "GET", headers: { accept: "application/json" } };
+    const API = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}`;  
+    
+    fetch(API, options)
+      .then((similarMoviesResponse) => similarMoviesResponse.json())
+      .then((similarMoviesResponse) => {
+        if (similarMoviesResponse.results && similarMoviesResponse.results.length > 0) {
+          setSimilarMovies(similarMoviesResponse.results);
+        } else {
+          // If no similar movies, get movies from the first genre using movieData
+          setSimilarMovies([]);
+          getDefaultMoviesByGenreWithData(movieData);
+        }
+      }).catch((err) => console.error(err));
+  }
+
+  const getDefaultMoviesByGenreWithData = (movieData) => {
+    if (movieData.genres && movieData.genres.length > 0) {
+      const firstGenreId = movieData.genres[0].id;
+      const options = { method: "GET", headers: { accept: "application/json" } };
+      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${firstGenreId}&page=1`;
+      
+      fetch(API, options)
+        .then((response) => response.json())
+        .then((response) => {
+          // Filter out the current movie and take first 8
+          const filteredMovies = response.results
+            .filter(defaultMovie => defaultMovie.id !== parseInt(id))
+            .slice(0, 8);
+          setDefaultMovies(filteredMovies);
+        })
+        .catch((err) => console.error(err));
+    }
   }
 
   useEffect(() => {
@@ -67,10 +95,16 @@ const API = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${pr
 if (similarMovies[0]) {
  console.log(similarMovies[0].id)
 }
-  return (
-    <div>
-      <HeaderDetails {...movie} />
-      <MDBContainer className="">
+
+// Determine which movies to display and what title to show
+const moviesToDisplay = similarMovies.length > 0 ? similarMovies : defaultMovies;
+const sectionTitle = similarMovies.length > 0 ? "Similar" : 
+  (movie.genres && movie.genres.length > 0 ? `More ${movie.genres[0].name} Movies` : "Recommended");
+
+return (
+  <div>
+    <HeaderDetails {...movie} />
+    <MDBContainer className="">
       
         <MDBRow className="p-5">
           <MDBCol>
@@ -137,20 +171,15 @@ if (similarMovies[0]) {
         </MDBRow>
      
         <MDBRow className="fullblackBackground text-center">
-        {/* {similarMovies && similarMovies.map((movie, index) => {
-           return <p>{movie.id} and {index}</p>
-          })} */}
-          <h1>Simular</h1>
+          <h1>{sectionTitle}</h1>
           <MDBRow>
-
-          {similarMovies.map((movie, index) => {
-            return<SimularListing simularMovie={movie} index={index} />
-            // <SimularListing {...movie} index={index}></SimularListing>
-          })}
+            {moviesToDisplay.map((movieItem, index) => {
+              return <SimularListing simularMovie={movieItem} key={movieItem.id || index} index={index} />
+            })}
           </MDBRow>
         </MDBRow>
       </MDBContainer>
-      {id}
+      {/* {id} */}
 
  
     </div>
