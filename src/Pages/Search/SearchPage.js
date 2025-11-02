@@ -27,6 +27,7 @@ export default function SearchPage() {
       .then((response) => {
         // console.log(response.results);
         setFilterPeople(response.results);
+        console.log(filteredPeople);
       }).catch((err) => console.error(err));
 
 
@@ -54,23 +55,30 @@ export default function SearchPage() {
 console.log(filteredMovie)
   return (
     <SearchContainer className="fullHeight">
-    <div>
-      <h2 className='pt-5'>Search for a movie or person</h2>
+      <div>
+        <h2 className='pt-5'>Search for a movie or person</h2>
 
-      <MDBInput
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      label='Search for a movie or person...'
-      id='controlledValue'
-      type='text'
-      size="lg"
-      contrast
-    />
+        <MDBInput
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          label='Search for a movie or person...'
+          id='controlledValue'
+          type='text'
+          size="lg"
+          contrast
+        />
 
-{
-  filteredMovie && filteredMovie.length > 0 && <DisplayList movies={filteredMovie} />
-}
-    </div>
-      </SearchContainer>
+        {filteredPeople && filteredPeople.length > 0 && (
+          <div>
+            {/* Add your people display component here */}
+            <h3>People Results:</h3>
+            {/* Example: <DisplayPeople people={filteredPeople} /> */}
+          </div>
+        )}
+
+        {filteredMovie && filteredMovie.length > 0 && <DisplayList movies={filteredMovie} />}
+
+      </div>
+    </SearchContainer>
   )
 }
