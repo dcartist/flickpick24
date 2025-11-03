@@ -3,7 +3,7 @@
   width: 100%;
   height: 80vh;
   background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-  padding: 60px 40px;
+  padding: 0; /* Removed all padding */
   overflow: hidden;
   margin: 0 auto;
 }
@@ -29,24 +29,24 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Minimum 150px width */
-  grid-auto-rows: minmax(180px, auto); /* Minimum 180px height */
-  gap: 12px;
-  width: 100%; /* Full width of container */
-  height: 100%; /* Full height of container */
-  margin: 0 auto;
-  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); /* Changed to auto-fill and 175px */
+  grid-auto-rows: minmax(175px, 1fr); /* Changed to 175px minimum */
+  gap: 0; /* Removed gap so images touch */
+  width: 100%;
+  height: 100%; /* Fill entire container */
+  margin: 0;
+  padding: 0; /* Removed all padding */
   box-sizing: border-box;
 }
 
 .grid-item {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border-radius: 12px;
+  border-radius: 0; /* Removed border radius */
   overflow: hidden;
   position: relative;
-  min-width: 150px; /* Minimum width enforced */
-  min-height: 180px; /* Minimum height enforced */
+  min-width: 175px; /* Updated to 175px */
+  min-height: 175px; /* Updated to 175px */
 }
 
 .grid-item.small {
@@ -57,34 +57,35 @@
 .grid-item.medium {
   grid-column: span 1;
   grid-row: span 2;
-  min-height: 360px; /* 180px * 2 for medium items */
+  min-height: 350px; /* 175px * 2 */
 }
 
 .grid-item.large {
   grid-column: span 2;
   grid-row: span 2;
-  min-width: 300px; /* 150px * 2 for large items */
-  min-height: 360px; /* 180px * 2 for large items */
+  min-width: 350px; /* 175px * 2 */
+  min-height: 350px; /* 175px * 2 */
 }
 
 .movie-item {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: 0; /* Removed border radius */
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: none; /* Removed shadow for seamless look */
   transition: all 0.4s ease;
 }
 
 .movie-poster {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This will crop the image to fill the container */
-  object-position: center; /* Center the crop */
+  object-fit: cover;
+  object-position: center;
   filter: grayscale(100%) brightness(0.7);
   transition: all 0.4s ease;
   transform: scale(1);
+  display: block; /* Ensure no gaps */
 }
 
 .movie-overlay {
@@ -93,7 +94,7 @@
   left: 0;
   right: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  padding: 10px;
+  padding: 15px; /* Increased for better readability */
   transform: translateY(100%);
   transition: all 0.4s ease;
 }
@@ -103,9 +104,9 @@
 }
 
 .movie-title {
-  font-size: 0.85rem;
+  font-size: 1rem; /* Increased size */
   font-weight: bold;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,26 +114,27 @@
 }
 
 .movie-year {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #bbb;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
 }
 
 .movie-rating {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #ffd700;
   font-weight: bold;
 }
 
 /* Hover Effects */
 .grid-item:hover {
-  transform: scale(1.08) translateY(-8px);
+  transform: scale(1.05) translateY(-5px);
   z-index: 5;
+  border-radius: 8px; /* Add radius only on hover */
 }
 
 .grid-item:hover .movie-poster {
   filter: grayscale(0%) brightness(1);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .grid-item:hover .movie-overlay {
@@ -140,12 +142,13 @@
 }
 
 .grid-item:hover .movie-item {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+  border-radius: 8px; /* Match hover radius */
 }
 
 /* Active state for clicks */
 .grid-item:active {
-  transform: scale(0.98) translateY(-5px);
+  transform: scale(0.98) translateY(-2px);
 }
 
 /* Loading State */
@@ -166,40 +169,45 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
   .movie-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-auto-rows: minmax(180px, auto);
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); /* Updated to 175px */
+    grid-auto-rows: minmax(175px, 1fr); /* Updated to 175px */
   }
   
   .grid-item.large {
     grid-column: span 1;
     grid-row: span 2;
-    min-width: 150px; /* Reset to single column width */
-    min-height: 360px;
+    min-width: 175px; /* Updated to 175px */
+    min-height: 350px; /* 175px * 2 */
   }
 }
 
 @media (max-width: 768px) {
   .movie-grid-container {
     height: 80vh;
-    padding: 40px 20px;
+    padding: 0; /* No padding on mobile either */
   }
   
   .movie-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-auto-rows: minmax(180px, auto);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); /* Updated to 175px */
+    grid-auto-rows: minmax(175px, 1fr); /* Updated to 175px */
+    gap: 0; /* No gap on mobile */
+  }
+  
+  .grid-item {
+    min-width: 175px; /* Updated to 175px */
+    min-height: 175px; /* Updated to 175px */
   }
   
   .grid-item.medium,
   .grid-item.large {
     grid-column: span 1;
     grid-row: span 1;
-    min-width: 150px;
-    min-height: 180px;
+    min-width: 175px; /* Updated to 175px */
+    min-height: 175px; /* Updated to 175px */
   }
   
   .movie-title {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
   
   .fade-overlay {
@@ -210,21 +218,26 @@
 @media (max-width: 480px) {
   .movie-grid-container {
     height: 85vh;
-    padding: 30px 15px;
+    padding: 0; /* No padding */
   }
   
   .movie-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-auto-rows: minmax(180px, auto);
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); /* Keep 175px minimum */
+    grid-auto-rows: minmax(175px, 1fr); /* Keep 175px minimum */
+    gap: 0; /* No gap */
+  }
+  
+  .grid-item {
+    min-width: 175px; /* Keep 175px minimum */
+    min-height: 175px; /* Keep 175px minimum */
   }
   
   .grid-item.medium,
   .grid-item.large {
     grid-column: span 1;
     grid-row: span 1;
-    min-width: 150px;
-    min-height: 180px;
+    min-width: 175px; /* Keep 175px minimum */
+    min-height: 175px; /* Keep 175px minimum */
   }
 }
 
