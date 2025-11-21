@@ -33,28 +33,44 @@ export default function Navigation() {
           <MDBNavbarNav>
             <MDBNavbarItem>
               <MDBNavbarLink aria-current="page">
-                <Link to="../" className="link-secondary text-white">
+                <Link
+                  to="../"
+                  className="link-secondary text-white"
+                  onClick={() => setOpenNav(false)}
+                >
                   Home
                 </Link>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink as={Link} to="/listing">
-                <Link to="/listing" className="link-secondary text-white">
+                <Link
+                  to="/listing"
+                  className="link-secondary text-white"
+                  onClick={() => setOpenNav(false)}
+                >
                   Listing
                 </Link>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink as={Link} to="/movieposter">
-                <Link to="/movieposter" className="link-secondary text-white">
+                <Link
+                  to="/movieposter"
+                  className="link-secondary text-white"
+                  onClick={() => setOpenNav(false)}
+                >
                   Movie Poster Maker
                 </Link>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink as={Link} to="/search">
-                <Link to="/search" className="link-secondary text-white">
+                <Link
+                  to="/search"
+                  className="link-secondary text-white"
+                  onClick={() => setOpenNav(false)}
+                >
                   Search
                 </Link>
               </MDBNavbarLink>
