@@ -46,6 +46,13 @@ export default function Navigation() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
+              <MDBNavbarLink as={Link} to="/movieposter">
+                <Link to="/movieposter" className="link-secondary text-white">
+                  Movie Poster Maker
+                </Link>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
               <MDBNavbarLink as={Link} to="/search">
                 <Link to="/search" className="link-secondary text-white">
                   Search

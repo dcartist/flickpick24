@@ -6,6 +6,7 @@ import Details from './Pages/Details/Details';
 import Listing from './Pages/Listing/Listing';
 import SearchPage from './Pages/Search/SearchPage';
 import Year from './Pages/TimeLine/Year';
+import MovePosterMaker from './Pages/MoviePosterMaker/MovePosterMaker';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import CategoriesListing from './Pages/Categories/CategoriesListing';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'; // lib
@@ -26,6 +27,7 @@ function App() {
       <Route path="/listing" element={<Listing />} />
       <Route path="/listing/:id" element={<Details />} />
       <Route path="/year" element={<Year />} />
+      <Route path="/movieposter" element={<MovePosterMaker />} />
       
       </Routes>
      
